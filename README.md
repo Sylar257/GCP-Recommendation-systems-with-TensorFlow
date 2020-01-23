@@ -23,3 +23,14 @@ Google Maps that suggests the *route that avoids toll roads*; smart reply sugges
 ### Option I: 
 
 **Content-based system**, we use the **metadata** about our products. (e.g. we know which movies are cartoons and which movies are sci-fi. Now, suppose we have a user who has seen and rated a few movie. Then we can recommend accordingly) Note that in this case, we have already segmented the **category** and know that corresponding attribute of each of our product.
+
+There is no Machine Learning happening here
+
+### Option II
+
+**Collaborative Filtering**, we have **no metadata**. Instead, we learn the  learn about item similarity and user similarity from the ratings data itself.
+
+We usually separate the large matrix into **user factors** and **item factors**. Then, if we need to find whether a particular user will like a particular movie, it's as simple as taking the row corresponding to the user and the column corresponding to the movie and multiplying them to get the predicted rating.
+
+![collaborative_filtering](images\collaborative_filtering.png)
+

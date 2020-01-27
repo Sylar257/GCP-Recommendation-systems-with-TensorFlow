@@ -24,7 +24,9 @@ Google Maps that suggests the *route that avoids toll roads*; smart reply sugges
 
 **Content-based system**, we use the **metadata** about our products. (e.g. we know which movies are cartoons and which movies are sci-fi. Now, suppose we have a user who has seen and rated a few movie. Then we can recommend accordingly) Note that in this case, we have already segmented the **category** and know that corresponding attribute of each of our product.
 
-There is no Machine Learning happening here
+There is no Machine Learning happening here.
+
+**Content-based filtering** uses item features to recommend new items *similar* to what the user has liked in the past.
 
 ### Option II
 
@@ -34,3 +36,22 @@ We usually separate the large matrix into **user factors** and **item factors**.
 
 ![collaborative_filtering](images\collaborative_filtering.png)
 
+**Collaborative Filtering** uses similarities between users and items *simultaneously* to determine recommendations.
+
+### Option III
+
+![Hybrid_system](images\Hybrid_system.png)
+
+If we have both the **meta-data** and **user interaction matrix**, we can build a **Hybrid system** that overcomes most of individual shortcomings.
+
+For example, we could develop a few recommenders and then use one or the other **depending on the scenario**. If a user has already rated a large number of items, perhaps we can rely on a **content-based** method. However, if the user has rated only a few items, we may instead prefer to use a **collaborative filtering** approach. This way, we can fully leverage the information we have about other users and their interactions with items in our database, to gain some insight into what we can recommend.
+
+Of course, if we have no information about a user's previous item interactions or we like any information about a given user, we may instead want to rely on a **knowledge-based** approach, and ask the user directly for their preferences via a survey before making recommendations. (this is why NetFlix asks you movies/shows you like when you create a new account)
+
+Lastly, we can build an ensemble model based on all of three outcomes.
+
+### Option IV
+
+![Deep_learning_approach](images\Deep_learning_approach.png)
+
+For example, suppose we wanted to recommend videos to our users, we could approach this from a deep learning point of view by taking attributes of the user's behavior input, for example, a sequence of their previously watched videos embedded into some latent space, combined with video attributes, either genre or artists information for a given video.

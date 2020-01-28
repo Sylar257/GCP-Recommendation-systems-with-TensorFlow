@@ -1,8 +1,8 @@
 # GCP Recommendation systems with TensorFlow
 
-[***Introduction***](https://github.com/Sylar257/GCP-time-series-and-NLP#Introduction):  
+[***Introduction***](https://github.com/Sylar257/GCP-Recommendation-systems-with-TensorFlow#Introduction):  An overview of recommendation systems
 
-[***Overview on Recommenders***](https://github.com/Sylar257/GCP-time-series-and-NLP#Overview): 
+[***Content-based Filtering***](https://github.com/Sylar257/GCP-Recommendation-systems-with-TensorFlow#Content-based_filtering): 
 
 [***TensorFlow Hub***](https://github.com/Sylar257/GCP-time-series-and-NLP#TensorFlow_Hub): a collection of pre-trained machine learning models and reusable modules
 
@@ -26,13 +26,13 @@ Google Maps that suggests the *route that avoids toll roads*; smart reply sugges
 
 There is no Machine Learning happening here.
 
-**Content-based filtering** uses item features to recommend new items *similar* to what the user has liked in the past.
+**Content-based filtering** uses item features to recommend new items *similar* to what the user has **liked in the past**.
 
 ### Option II
 
 **Collaborative Filtering**, we have **no metadata**. Instead, we learn the  learn about item similarity and user similarity from the ratings data itself.
 
-We usually separate the large matrix into **user factors** and **item factors**. Then, if we need to find whether a particular user will like a particular movie, it's as simple as taking the row corresponding to the user and the column corresponding to the movie and multiplying them to get the predicted rating.
+We usually separate the large matrix into **user factors** and **item factors**. Then, if we need to find whether a particular user will like a particular movie, it's as simple as taking the row corresponding to the user and the column corresponding to the movie and multiplying them to get the predicted rating. 
 
 ![collaborative_filtering](images\collaborative_filtering.png)
 
@@ -55,3 +55,53 @@ Lastly, we can build an ensemble model based on all of three outcomes.
 ![Deep_learning_approach](images\Deep_learning_approach.png)
 
 For example, suppose we wanted to recommend videos to our users, we could approach this from a deep learning point of view by taking attributes of the user's behavior input, for example, a sequence of their previously watched videos embedded into some latent space, combined with video attributes, either genre or artists information for a given video.
+
+## Content-based_filtering
+
+Content-based filtering uses **item features** to recommend new items that are **similar** to what the user has liked in the past.
+
+We will look into:
+
+* how to measure similarity of elements in an embedding space
+* the mechanics of content-based recommendation systems
+* build a content-based recommendation system
+
+![content-based-filtering-1](images\content-based-filtering-1.png)
+
+![content-based-filtering-2](images\content-based-filtering-2.png)
+
+compute matrix for each user, then use `tf.stack()` to stack them together:
+
+![content-based-filtering-3](images\content-based-filtering-3.png)
+
+![content-based-filtering-4](images\content-based-filtering-4.png)
+
+Sum across feature columns, and then **normalize** individually:
+
+![content-based-filtering-5](images\content-based-filtering-5.png)
+
+![content-based-filtering-6](images\content-based-filtering-6.png)
+
+This results in a **user feature tensor**, where *each row corresponds to a specific user feature vector*:
+
+ ![content-based-filtering-7](images\content-based-filtering-7.png)
+
+To find the inferred **new movie rankings** for our users, we compute the **dot product** between each user feature vector and each movie feature vector. In short, we're seeing how similar each user is with respect to each movie as measured across these five **feature dimensions**:
+
+![content-based-filtering-8](images\content-based-filtering-8.png)
+
+Do the same  thing for all other users:
+
+![content-based-filtering-9](images\content-based-filtering-9.png)
+
+use `tf.map_fn()` to achieve this:
+
+![content-based-filtering-10](images\content-based-filtering-10.png)
+
+use `tf.where()` to focus only on the **movies without rankings yet**(new movies):
+
+![content-based-filtering-11](images\content-based-filtering-11.png)
+
+this brings us to here:
+
+![content-based-filtering-12](images\content-based-filtering-12.png)

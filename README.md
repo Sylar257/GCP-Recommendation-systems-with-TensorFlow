@@ -105,3 +105,42 @@ use `tf.where()` to focus only on the **movies without rankings yet**(new movies
 this brings us to here:
 
 ![content-based-filtering-12](images\content-based-filtering-12.png)
+
+## Collaborative Filtering
+
+*Content based recommendations* used **embedding spaces** for *items only*, whereas for **collaborative filtering** we're learning where users and items fit within a **common embedding** space along dimensions they have in common. 
+
+*We can choose a number of dimensions* to represent them in either using human derived features or using latent features that are under the hood of our preferences, which we'll learn how to find very soon. 
+
+*Each item* has a vector within its embedding space that describes the items **amount of expression of each dimension**. *Each user* also has a vector within its embedding space that describes **how strong their preference is for each dimension**.
+
+### We don’t hand-engineer the feature embedding anymore
+
+The embeddings can be learned from data. 
+
+Instead of defining the factors that we will assign values along our coordinate system, we will use the user item interaction data to **learn the latent factors** that best factorize the user item interaction matrix into a user factor embedding and item factor embedding.
+
+![collaborative_filtering](images\collaborative_filtering.png)
+
+The **number of latent features**(in this case it’s 2) is a hyperparameter that we can use as a knob for the tradeoff between **more information compression** and **more reconstruction error **from our approximated matrices.
+
+![collaborative_filtering_2](images\collaborative_filtering_2.png)
+
+We use **Weighted Alternating least squares**(WALS) to solve factorization and impute unwatched movies with **low confidence** score.
+
+How does this works:
+
+![collaborative_filtering_3](images\collaborative_filtering_3.png)
+
+```python
+def training_input_fn():
+  features = {
+    INPUT_ROWS: tf.SparseTensor(...)
+    INPUT_COLs: tf.SparseTensor(...)
+  }
+  
+  return features, None
+```
+
+There is **no label** as we are solving the two features based on **interaction matrices**
+

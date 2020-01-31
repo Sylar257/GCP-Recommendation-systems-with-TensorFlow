@@ -146,3 +146,34 @@ There is **no label** as we are solving the two features based on **interaction 
 
 ## Implementing WALS in TensorFlow
 
+The first notebook enables us to *convert our data from warehouse* to the **user interaction matrix**.
+
+![collaborative_filtering_4](images\collaborative_filtering_4.png)
+
+Next step is to apply `tf.contrib.factorization.WALSMatrixFactorization`. The algorithm is all setup, we just need to connect some piping, such as `input_fn` `serving_input_fn` and `train_and_eval_loop`.
+
+Because WALS requires whole rows or columns, the data has to be **preprocessed to provide `SparseTensors` of rows/columns**.
+
+![collaborative_filtering_5](images\collaborative_filtering_5.png)
+
+![collaborative_filtering_6](images\collaborative_filtering_6.png)
+
+After creating **rows/columns**, we use `tf.contrib.learn.` to construct factorization estimator:
+
+![collaborative_filtering_7](images\collaborative_filtering_7.png)
+
+let’s take a look into the `train_input_fn` and `eval_input_fn`:
+
+![collaborative_filtering_8](images\collaborative_filtering_8.png)
+
+![collaborative_filtering_9](images\collaborative_filtering_9.png)
+
+### Instantiating a WALS Estimator
+
+![collaborative_filtering_10](images\collaborative_filtering_10.png)
+
+![collaborative_filtering_11](images\collaborative_filtering_11.png)
+
+Next, create `train_and_evaluate()` loop wrapping around `tf.contrib.factorization.WALSMatrixFactorization()`:
+
+![collaborative_filtering_12](images\collaborative_filtering_12.png)

@@ -144,3 +144,5 @@ def training_input_fn():
 
 There is **no label** as we are solving the two features based on **interaction matrices**
 
+## Implementing WALS in TensorFlow
+

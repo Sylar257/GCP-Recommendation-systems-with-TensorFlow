@@ -10,7 +10,7 @@
 
 [***Hybrid Recommendation systems***](https://github.com/Sylar257/GCP-time-series-and-NLP#Hybrid_system): Real-world recommendation systems are usually a hybrid of three broad theoretical approaches
 
-
+[***Context-aware recommendation systems(CARS)***](https://github.com/Sylar257/GCP-time-series-and-NLP#CARS): one more dimension considered for the context
 
 ## Introduction
 
@@ -195,3 +195,21 @@ Next, create `train_and_evaluate()` loop wrapping around `tf.contrib.factorizati
 A simple way to create a hybrid model is to just take things from each of the models and combine them all in a **neural network**. 
 
 The idea is that the independent errors within each mile will cancel out, and we'll have much better recommendations.
+
+## CARS
+
+![CARS](images\CARS.png)
+
+For example:
+
+![CARS_1](images\CARS_1.png)
+
+CARS algorithms:
+
+* Contextual prefiltering
+* Contextual postfiltering
+* Contextual modeling
+
+#### Contextual prefiltering
+
+user x item x context ==> Rating

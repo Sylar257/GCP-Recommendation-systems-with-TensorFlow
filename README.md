@@ -2,13 +2,13 @@
 
 [***Introduction***](https://github.com/Sylar257/GCP-Recommendation-systems-with-TensorFlow#Introduction):  An overview of recommendation systems
 
-[***Content-based Filtering***](https://github.com/Sylar257/GCP-Recommendation-systems-with-TensorFlow#Content-based_filtering): 
+[***Content-based Filtering***](https://github.com/Sylar257/GCP-Recommendation-systems-with-TensorFlow#Content-based_filtering): Recommend items based on content features
 
-[***TensorFlow Hub***](https://github.com/Sylar257/GCP-time-series-and-NLP#TensorFlow_Hub): a collection of pre-trained machine learning models and reusable modules
+[***Collaborative Filtering***](https://github.com/Sylar257/GCP-time-series-and-NLP#Collaborative_Filtering): Based on user behavior only. Recommend items based users with similar patterns
 
-[***Encoder-Decoder_networkds***](https://github.com/Sylar257/GCP-time-series-and-NLP#Encoder-Decoder-networks): often used in tasks such as language translation, question answering and text summarization
+[***Knowledge-Based***](https://github.com/Sylar257/GCP-time-series-and-NLP#Knowledge-Based): Ask users for preference
 
-[***AutoML and DialogFlow***](https://github.com/Sylar257/GCP-time-series-and-NLP#AutoML_and_DialogFlow): A useful library that deal with all kinds of tensor-to-tensor problem setups
+[***Hybrid Recommendation systems***](https://github.com/Sylar257/GCP-time-series-and-NLP#Hybrid_system): Real-world recommendation systems are usually a hybrid of three broad theoretical approaches
 
 
 
@@ -106,7 +106,7 @@ this brings us to here:
 
 ![content-based-filtering-12](images\content-based-filtering-12.png)
 
-## Collaborative Filtering
+## Collaborative_Filtering
 
 *Content based recommendations* used **embedding spaces** for *items only*, whereas for **collaborative filtering** we're learning where users and items fit within a **common embedding** space along dimensions they have in common. 
 
@@ -177,3 +177,21 @@ let’s take a look into the `train_input_fn` and `eval_input_fn`:
 Next, create `train_and_evaluate()` loop wrapping around `tf.contrib.factorization.WALSMatrixFactorization()`:
 
 ![collaborative_filtering_12](images\collaborative_filtering_12.png)
+
+### Issues with Collaborative Filtering
+
+#### The cold start problem
+
+![collaborative_filtering_13](images\collaborative_filtering_13.png)
+
+#### Solution: a hybrid of content+collab
+
+![collaborative_filtering_14](images\collaborative_filtering_14.png)
+
+## Hybrid_system
+
+![Hybrid_system_1](images\Hybrid_system_1.png)
+
+A simple way to create a hybrid model is to just take things from each of the models and combine them all in a **neural network**. 
+
+The idea is that the independent errors within each mile will cancel out, and we'll have much better recommendations.

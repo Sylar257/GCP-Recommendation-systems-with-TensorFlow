@@ -20,6 +20,8 @@ However, Recommendation systems are not just about suggesting **products** to **
 
 Google Maps that suggests the *route that avoids toll roads*; smart reply suggest *possible replies* to email that we received are also **Recommendation systems**. It is about personalization for each individual user.
 
+![Picture5](images/Picture5.jpg)
+
 ### Option I: 
 
 **Content-based system**, we use the **metadata** about our products. (e.g. we know which movies are cartoons and which movies are sci-fi. Now, suppose we have a user who has seen and rated a few movie. Then we can recommend accordingly) Note that in this case, we have already segmented the **category** and know that corresponding attribute of each of our product.
@@ -55,7 +57,7 @@ Lastly, we can build an ensemble model based on all of three outcomes.
 ![Deep_learning_approach](images\Deep_learning_approach.png)
 
 For example, suppose we wanted to recommend videos to our users, we could approach this from a deep learning point of view by taking attributes of the user's behavior input, for example, a sequence of their previously watched videos embedded into some latent space, combined with video attributes, either genre or artists information for a given video.
- 
+
 ## Content-based_filtering
 
 Content-based filtering uses **item features** to recommend new items that are **similar** to what the user has liked in the past.

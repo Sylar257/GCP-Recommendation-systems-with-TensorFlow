@@ -20,8 +20,6 @@ However, Recommendation systems are not just about suggesting **products** to **
 
 Google Maps that suggests the *route that avoids toll roads*; smart reply suggest *possible replies* to email that we received are also **Recommendation systems**. It is about personalization for each individual user.
 
-![Picture5](images/Picture5.jpg)
-
 ### Option I: 
 
 **Content-based system**, we use the **metadata** about our products. (e.g. we know which movies are cartoons and which movies are sci-fi. Now, suppose we have a user who has seen and rated a few movie. Then we can recommend accordingly) Note that in this case, we have already segmented the **category** and know that corresponding attribute of each of our product.
@@ -36,7 +34,7 @@ There is no Machine Learning happening here.
 
 We usually separate the large matrix into **user factors** and **item factors**. Then, if we need to find whether a particular user will like a particular movie, it's as simple as taking the row corresponding to the user and the column corresponding to the movie and multiplying them to get the predicted rating. 
 
-![collaborative_filtering](images\collaborative_filtering.png)
+![collaborative_filtering](images/collaborative_filtering.png)
 
 **Collaborative Filtering** uses similarities between users and items *simultaneously* to determine recommendations.
 

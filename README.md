@@ -120,17 +120,17 @@ The embeddings can be learned from data.
 
 Instead of defining the factors that we will assign values along our coordinate system, we will use the user item interaction data to **learn the latent factors** that best factorize the user item interaction matrix into a user factor embedding and item factor embedding.
 
-![collaborative_filtering](images\collaborative_filtering.png)
+![collaborative_filtering](images/collaborative_filtering.png)
 
 The **number of latent features**(in this case it’s 2) is a hyperparameter that we can use as a knob for the tradeoff between **more information compression** and **more reconstruction error **from our approximated matrices.
 
-![collaborative_filtering_2](images\collaborative_filtering_2.png)
+![collaborative_filtering_2](images/collaborative_filtering_2.png)
 
 We use **Weighted Alternating least squares**(WALS) to solve factorization and impute unwatched movies with **low confidence** score.
 
 How does this works:
 
-![collaborative_filtering_3](images\collaborative_filtering_3.png)
+![collaborative_filtering_3](images/collaborative_filtering_3.png)
 
 ```python
 def training_input_fn():
@@ -148,49 +148,49 @@ There is **no label** as we are solving the two features based on **interaction 
 
 The first notebook enables us to *convert our data from warehouse* to the **user interaction matrix**.
 
-![collaborative_filtering_4](images\collaborative_filtering_4.png)
+![collaborative_filtering_4](images/collaborative_filtering_4.png)
 
 Next step is to apply `tf.contrib.factorization.WALSMatrixFactorization`. The algorithm is all setup, we just need to connect some piping, such as `input_fn` `serving_input_fn` and `train_and_eval_loop`.
 
 Because WALS requires whole rows or columns, the data has to be **preprocessed to provide `SparseTensors` of rows/columns**.
 
-![collaborative_filtering_5](images\collaborative_filtering_5.png)
+![collaborative_filtering_5](images/collaborative_filtering_5.png)
 
-![collaborative_filtering_6](images\collaborative_filtering_6.png)
+![collaborative_filtering_6](images/collaborative_filtering_6.png)
 
 After creating **rows/columns**, we use `tf.contrib.learn.` to construct factorization estimator:
 
-![collaborative_filtering_7](images\collaborative_filtering_7.png)
+![collaborative_filtering_7](images/collaborative_filtering_7.png)
 
 let’s take a look into the `train_input_fn` and `eval_input_fn`:
 
-![collaborative_filtering_8](images\collaborative_filtering_8.png)
+![collaborative_filtering_8](images/collaborative_filtering_8.png)
 
-![collaborative_filtering_9](images\collaborative_filtering_9.png)
+![collaborative_filtering_9](images/collaborative_filtering_9.png)
 
 ### Instantiating a WALS Estimator
 
-![collaborative_filtering_10](images\collaborative_filtering_10.png)
+![collaborative_filtering_10](images/collaborative_filtering_10.png)
 
-![collaborative_filtering_11](images\collaborative_filtering_11.png)
+![collaborative_filtering_11](images/collaborative_filtering_11.png)
 
 Next, create `train_and_evaluate()` loop wrapping around `tf.contrib.factorization.WALSMatrixFactorization()`:
 
-![collaborative_filtering_12](images\collaborative_filtering_12.png)
+![collaborative_filtering_12](images/collaborative_filtering_12.png)
 
 ### Issues with Collaborative Filtering
 
 #### The cold start problem
 
-![collaborative_filtering_13](images\collaborative_filtering_13.png)
+![collaborative_filtering_13](images/collaborative_filtering_13.png)
 
 #### Solution: a hybrid of content+collab
 
-![collaborative_filtering_14](images\collaborative_filtering_14.png)
+![collaborative_filtering_14](images/collaborative_filtering_14.png)
 
 ## Hybrid_system
 
-![Hybrid_system_1](images\Hybrid_system_1.png)
+![Hybrid_system_1](images/Hybrid_system_1.png)
 
 A simple way to create a hybrid model is to just take things from each of the models and combine them all in a **neural network**. 
 
@@ -198,11 +198,11 @@ The idea is that the independent errors within each mile will cancel out, and we
 
 ## CARS
 
-![CARS](images\CARS.png)
+![CARS](images/CARS.png)
 
 For example:
 
-![CARS_1](images\CARS_1.png)
+![CARS_1](images/CARS_1.png)
 
 CARS algorithms:
 

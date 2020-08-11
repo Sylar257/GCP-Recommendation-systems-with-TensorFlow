@@ -55,7 +55,7 @@ Lastly, we can build an ensemble model based on all of three outcomes.
 ![Deep_learning_approach](images\Deep_learning_approach.png)
 
 For example, suppose we wanted to recommend videos to our users, we could approach this from a deep learning point of view by taking attributes of the user's behavior input, for example, a sequence of their previously watched videos embedded into some latent space, combined with video attributes, either genre or artists information for a given video.
-
+ 
 ## Content-based_filtering
 
 Content-based filtering uses **item features** to recommend new items that are **similar** to what the user has liked in the past.

@@ -118,7 +118,7 @@ this brings us to here:
 
 The embeddings can be learned from data. 
 
-Instead of defining the factors that we will assign values along our coordinate system, we will use the user item interaction data to **learn the latent factors** that best factorize the user item interaction matrix into a user factor embedding and item factor embedding.
+Instead of defining the factors that we will assign values along our coordinate system, we will use the user item interaction data to **learn the latent factors** that best factorize the user item interaction matrix into a user **factor embedding** and **item factor embedding**.
 
 ![collaborative_filtering](images/collaborative_filtering.png)
 

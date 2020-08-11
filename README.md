@@ -30,7 +30,7 @@ There is no Machine Learning happening here.
 
 ### Option II
 
-**Collaborative Filtering**, we have **no metadata**. Instead, we learn the  learn about item similarity and user similarity from the ratings data itself.
+**Collaborative Filtering**, we have **no metadata**. Instead, we learn about item similarity and user similarity from the ratings data itself.
 
 We usually separate the large matrix into **user factors** and **item factors**. Then, if we need to find whether a particular user will like a particular movie, it's as simple as taking the row corresponding to the user and the column corresponding to the movie and multiplying them to get the predicted rating. 
 
@@ -40,7 +40,7 @@ We usually separate the large matrix into **user factors** and **item factors**.
 
 ### Option III
 
-![Hybrid_system](images\Hybrid_system.png)
+![Hybrid_system](images/Hybrid_system.png)
 
 If we have both the **meta-data** and **user interaction matrix**, we can build a **Hybrid system** that overcomes most of individual shortcomings.
 

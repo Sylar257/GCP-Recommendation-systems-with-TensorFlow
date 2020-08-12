@@ -213,3 +213,13 @@ CARS algorithms:
 #### Contextual prefiltering
 
 user x item x context ==> Rating
+
+## YouTube's Recommendation System Overview
+
+![YouTube_1](images/YouTube_1.png)
+
+![YouTube_2](images/YouTube_2.png)
+
+![YouTube_3](images/YouTube_3.png)
+
+![YouTube_4](images/YouTube_4.png)
